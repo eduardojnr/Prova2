@@ -73,10 +73,10 @@ public class Main {
                     System.out.println("Digite o número da edição do livro: ");
                     lEdicao = entradaString.nextLine();
 
-                    System.out.println("Digite o status do livro: ");
+                    System.out.println("Digite o status do livro:\n(Emprestado | Disponível)");
                     lStatus = entradaString.nextLine();
 
-                    objlivro = new Livro(lIsbn, lTitulo, lAutor, lEditora, lEdicao, lStatus); // linha com problema
+                    objlivro = new Livro(lIsbn, lTitulo, lAutor, lEditora, lEdicao, lStatus);
                     ArrayLivros.cadastrar(objlivro);
 
                     System.out.println("Livro cadastrado!");
@@ -97,6 +97,37 @@ public class Main {
 
                 case 5:
                     System.out.println("Entrando no registro de empréstimo...");
+                    
+                    System.out.println("Insira o CPF: ");
+                    pCpf = entradaString.nextLine();
+                    
+                    System.out.println("Insira o ISBN do livro: ");
+                    lIsbn = entradaString.nextLine();
+                    
+                    int aux = 0;
+                    
+                    if (!(ArrayPessoa.getListaPessoas().isEmpty()) && !(ArrayLivros.getListaLivros().isEmpty())){
+                        for (Pessoa l : ArrayPessoa.getListaPessoas()){
+                            if (l.getNome().equalsIgnoreCase(pCpf)){
+                                break;
+                            } else {aux++;}
+                        }
+                        for (Livro l : ArrayLivros.getListaLivros()){
+                            if (l.getIsbn().equalsIgnoreCase(lIsbn)){
+                                break;
+                            } else {aux++;}
+                        }
+                    }
+                    
+                    System.out.println("Insira a data início do empréstimo\n(dd/mm/aaaa)");
+                    
+                    System.out.println("Insira a data fim do empréstimo\n(dd/mm/aaaa)");
+                    
+                    System.out.println("Insira a data de devolução\n(dd/mm/aaaa)");
+                    
+                    System.out.println("Status\n(Em andamento | Concluido)");
+                    
+                    
                     break;
 
                 case 6:
